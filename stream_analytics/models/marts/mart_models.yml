@@ -1,0 +1,61 @@
+version: 2
+
+models:
+    - name: dim_content
+      columns: 
+      - name: CONTENT_KEY
+        data_type: varchar
+        tests:
+          - unique
+          - not_null 
+
+    - name: dim_user
+      columns: 
+      - name: USER_KEY
+        data_type: varchar
+        tests: 
+          - unique
+          - not_null
+
+    - name: dim_dates
+      columns:            
+      - name: DATE_KEY
+        data_type: int
+        tests:
+          - unique
+          - not_null
+
+    - name: fct_watch_events
+      columns:            
+      - name: EVENT_ID
+        data_type: varchar
+        tests:
+          - unique
+          - not_null
+                
+      - name: CONTENT_KEY
+        data_type: varchar
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_content')
+                field: CONTENT_KEY
+      
+      - name: DATE_KEY
+        data_type: int
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_dates')
+                field: DATE_KEY
+
+      - name: USER_KEY
+        data_type: varchar
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_user')
+                field: USER_KEY

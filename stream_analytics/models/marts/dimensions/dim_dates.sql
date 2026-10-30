@@ -1,0 +1,9 @@
+SELECT 
+    TO_CHAR(DATE,'YYYYMMDD') :: INT AS DATE_KEY,
+    DATE AS FULL_DATE,
+    YEAR :: SMALLINT AS YEAR,
+    MONTH :: SMALLINT AS MONTH,
+    TO_CHAR(DATE :: DATE ,'MMM') AS MONTH_NAME,
+    DAY :: SMALLINT AS DAY
+FROM 
+    {{ ref('int_dates__deduped') }}

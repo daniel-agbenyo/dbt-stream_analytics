@@ -1,0 +1,25 @@
+version: 2
+
+models:
+ - name: int_content__deduped
+   columns: 
+   - name: CONTENT_ID
+     data_type: varchar
+     tests: 
+     - not_null
+     - unique
+
+ - name: int_user__deduped
+   columns: 
+   - name: USER_ID
+     data_type: varchar
+     tests: 
+     - not_null
+
+ - name: int_events_watched__flagged
+   columns: 
+   - name: EVENT_ID
+     data_type: varchar
+     tests:
+     - unique
+     - not_null

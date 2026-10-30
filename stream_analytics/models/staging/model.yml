@@ -1,0 +1,94 @@
+version: 2
+
+models:
+    - name: stg_watch_events_flat__watch_events
+      config:
+        contract:
+          enforced: true
+
+      description: Cast and trim standardized types from the raw WATCH_EVENTS_FLAT table
+      columns: 
+
+        - name: EVENT_ID
+          description: 'Unique ID for WATCH_EVENTS TABLE'
+          data_type: varchar
+          tests:
+           - unique
+           - not_null 
+
+        - name: USER_ID
+          data_type: varchar
+          tests: 
+           - not_null
+                        
+        - name: USER_NAME
+          data_type: varchar
+          tests:
+           - not_null
+
+        - name: USER_COUNTRY
+          data_type: varchar
+          tests:
+           - not_null
+
+        - name: USER_SUBSCRIPTION_TIER
+          data_type: varchar
+          tests:
+            - accepted_values:
+                arguments:
+                  values: ['Premium', 'Basic', 'Free']
+            - not_null
+
+        - name: CONTENT_ID
+          data_type: varchar
+          tests:
+           - not_null
+
+        - name: CONTENT_TITLE
+          data_type: varchar
+          tests:
+           - not_null
+                    
+        - name: CONTENT_GENRE
+          data_type: varchar
+          tests:
+           - not_null
+
+        - name: CONTENT_RELEASE_DATE
+          data_type: date
+          tests:
+           - not_null
+
+        - name: CONTENT_DURATION_MINUTES
+          data_type: number
+          tests:
+           - not_null
+
+        - name: WATCH_DATE
+          data_type: date
+          tests:
+           - not_null
+
+        - name: DEVICE_TYPE
+          data_type: varchar
+          tests:
+            - accepted_values:
+                arguments:
+                  values: ['Mobile', 'Tablet', 'Desktop', 'TV']
+            - not_null
+
+        - name: MINUTES_WATCHED
+          data_type: number
+          tests:
+           - not_null
+                    
+        - name: COMPLETED_FLAG
+          data_type: number
+          tests:
+           - accepted_values:
+               arguments:
+                 values: [0, 1]
+           - not_null                                  
+
+        - name: RATING_GIVEN
+          data_type: float

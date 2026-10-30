@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: int_watch_events_flat__models
+    table: 
+      - name: int_user__deduped
+        name: CUSTOMER_ID
+        tests: [unique, not_noll]
+
+      - name: int_content__deduped
+        name: CONTENT_ID
+        tests: [unique, not_null]
+        
+

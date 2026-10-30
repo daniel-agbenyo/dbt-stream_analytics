@@ -1,0 +1,71 @@
+version: 2
+
+sources:
+    - name: raw_data
+      database: STREAM_DB
+      schema: STREAM_SCHEMA
+
+      tables:
+        - name: WATCH_EVENTS_FLAT
+          columns:
+
+            - name: EVENT_ID
+              tests:
+                - not_null
+                - unique:
+                    config:
+                      severity: error
+
+            - name: USER_ID
+              tests: 
+                - not_null
+                        
+            - name: USER_NAME
+              tests:
+                - not_null
+
+            - name: USER_COUNTRY
+              tests:
+                - not_null
+
+            - name: USER_SUBSCRIPTION_TIER
+              tests:
+                - not_null
+
+            - name: CONTENT_ID
+              tests:
+                - not_null
+
+            - name: CONTENT_TITLE
+              tests:
+                - not_null
+
+            - name: CONTENT_GENRE
+              tests:
+                - not_null
+                    
+            - name: CONTENT_RELEASE_DATE
+              tests:
+                - not_null
+
+            - name: CONTENT_DURATION_MINUTES
+              tests:
+                - not_null
+
+            - name: WATCH_DATE
+              tests:
+                - not_null
+
+            - name: DEVICE_TYPE
+              tests:
+                - not_null
+
+            - name: MINUTES_WATCHED
+              tests:
+                - not_null
+                    
+            - name: COMPLETED_FLAG
+              tests:
+                - not_null
+
+            - name: RATING_GIVEN
